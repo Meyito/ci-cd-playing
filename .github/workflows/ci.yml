@@ -21,7 +21,9 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Check conflicts
-        run: ./scripts/checkout.sh 
+        run: |
+        git fetch origin "+refs/heads/master:refs/remotes/origin/master"
+        git merge origin/master
         
   test:
     runs-on: ubuntu-latest
