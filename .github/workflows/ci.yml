@@ -21,7 +21,7 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Check conflicts
-        run: chmod +x /scripts/checkout.sh && sudo sh /scripts/checkout.sh 
+        run: chmod +x ./scripts/checkout.sh && sudo sh ./scripts/checkout.sh 
         
   test:
     runs-on: ubuntu-latest
