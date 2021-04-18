@@ -11,21 +11,15 @@ on:
       - '!main'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  checkout:
-    # The type of runner that the job will run on
+jobs:   
+  docker:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: Check conflicts
-        run: chmod +x /scripts/checkout.sh && sudo sh /scripts/checkout.sh 
-        
-  test:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    steps:
-      - name: Deploy app
-        run: echo Deploy!!!!
+      - name: Aloha action
+        uses: Meyito/aloha-docker-ga@v1
+        with:
+          who-to-greet: 'Mel'
+          
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
